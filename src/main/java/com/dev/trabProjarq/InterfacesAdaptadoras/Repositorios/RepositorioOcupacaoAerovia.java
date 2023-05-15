@@ -21,11 +21,11 @@ public class RepositorioOcupacaoAerovia implements IOcupacaoAeroviaRep {
 	}
 
 	@Override
-	public List<OcupacaoAerovia> findOcupadasSlots(int aeroviaId, LocalDate data, List<Float> slotsHorarios) {
+	public List<OcupacaoAerovia> findOcupadasSlots(int aeroviaId, LocalDate data, List<Integer> slotsHorarios) {
 		return ocupacaoAeroviaCrud.findAll().stream()
 		.filter(oa -> oa.aerovia.id == aeroviaId)
 		.filter(oa -> oa.data.equals(data))
-		.filter(oa -> slotsHorarios.contains((float) oa.slot_horario))
+		.filter(oa -> slotsHorarios.contains(oa.slot_horario))
 		.collect(Collectors.toList());
 	}
 

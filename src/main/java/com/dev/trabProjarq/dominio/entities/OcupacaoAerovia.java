@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Entity
@@ -23,13 +24,13 @@ public class OcupacaoAerovia {
 
 	public int slot_altitude;
 
-	public int slot_horario;
+	public List<Integer> slot_horario;
 	
     public OcupacaoAerovia() {
         
     }
 
-    public OcupacaoAerovia(LocalDate data, Aerovia aerovia, int slot_altitude, int slot_horario) {
+    public OcupacaoAerovia(LocalDate data, Aerovia aerovia, int slot_altitude, List<Integer> slot_horario) {
         this.data = data;
         this.aerovia = aerovia;
         this.slot_altitude = slot_altitude;

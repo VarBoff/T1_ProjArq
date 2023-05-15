@@ -2,6 +2,7 @@ package com.dev.trabProjarq.dominio.services;
 
 import com.dev.trabProjarq.Aplicacao.DTO.PorcentagemOcupacaoDTO;
 import com.dev.trabProjarq.Aplicacao.DTO.RelatorioDTO;
+import com.dev.trabProjarq.dominio.entities.Aeronave;
 import com.dev.trabProjarq.dominio.entities.Aerovia;
 import com.dev.trabProjarq.dominio.entities.OcupacaoAerovia;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,24 +25,24 @@ public class ServicoDeAerovias {
         this.ocupacaoRep = ocupacaoRep;
     }
 
-    public List<Integer> consultaSlotsLivres(int aeroviaId, LocalDate data, float horario, float velCruzeiro){
+    public List<Integer> consultaSlotsLivres(int aeroviaId, LocalDate data, float horario, Aeronave aeronave){
         Aerovia aerovia = aeroviaRep.findAerovia(aeroviaId).get();
 
-        List<Integer> slotsTodos = new ArrayList<>(Arrays.asList(25000, 26000, 27000, 28000, 29000, 30000, 31000, 32000, 33000, 34000));
-        List<Float> slotsHorarios = new ArrayList<>();
+        List<Integer> slotsTodos = new ArrayList<>(Arrays.asList(25000, 26000, 27000, 28000, 29000, 30000, 31000, 32000, 33000, 34000, 35000));
+        List<Integer> slotsHorarios = new ArrayList<>();
 
-        float tempoVoo = aerovia.distancia / velCruzeiro;
+        float tempoVoo = aerovia.distancia / aeronave.velCruzeiro;
 
         tempoVoo = tempoVoo + horario;
         
-        slotsHorarios.add((float) Math.floor(horario));
+        slotsHorarios.add((int) Math.floor(horario));
 
         while(tempoVoo > horario){
-            slotsHorarios.add((float) Math.floor(horario));
+            slotsHorarios.add((int) Math.floor(horario));
             tempoVoo--;
         } 
         
-        slotsHorarios.add((float) Math.ceil(horario));
+        slotsHorarios.add((int) Math.ceil(horario));
 
         List<OcupacaoAerovia> ocupadas = this.ocupacaoRep.findOcupadasSlots(aeroviaId, data, slotsHorarios);
 

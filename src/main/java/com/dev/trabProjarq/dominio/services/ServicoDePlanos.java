@@ -2,7 +2,6 @@ package com.dev.trabProjarq.dominio.services;
 
 import com.dev.trabProjarq.Aplicacao.DTO.PlanoVooDTO;
 import com.dev.trabProjarq.dominio.entities.*;
-import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +16,14 @@ public class ServicoDePlanos {
     private IPlanosRep planosRep;
     private IRotasRep rotasRep;
     private IOcupacaoAeroviaRep ocupacaoRep;
+    private IAeronaveRep aeronaveRep;
 
     @Autowired
-    public ServicoDePlanos(IPlanosRep planosRep, IRotasRep rotasRep, IOcupacaoAeroviaRep ocupacaoRep) {
+    public ServicoDePlanos(IPlanosRep planosRep, IRotasRep rotasRep, IOcupacaoAeroviaRep ocupacaoRep, IAeronaveRep aeronaveRep) {
         this.planosRep = planosRep;
         this.rotasRep = rotasRep;
         this.ocupacaoRep = ocupacaoRep;
+        this.aeronaveRep = aeronaveRep;
     }
 
     public List<Aerovia> verificarPlanoDeVoo(PlanoVooDTO propostaPlano) {
@@ -31,23 +32,22 @@ public class ServicoDePlanos {
         List<Aerovia> trechosComProblemas = new ArrayList<>();
 
         for (Aerovia aerovia: rotaEscolhida.aerovias) {
-            List<Float> slotsHorarios = new ArrayList<>();
 
-            float tempoVoo = aerovia.distancia / propostaPlano.velCruzeiro;
+            float tempoVoo = aerovia.distancia / propostaPlano.aeronave.velCruzeiro;
 
             tempoVoo = tempoVoo + propostaPlano.horarioPartida;
             
-            slotsHorarios.add((float) Math.floor(propostaPlano.horarioPartida));
+            propostaPlano.slot_horario.add((int)Math.ceil(propostaPlano.horarioPartida));
 
             while(tempoVoo > propostaPlano.horarioPartida){
-                slotsHorarios.add((float) Math.floor(propostaPlano.horarioPartida));
+                propostaPlano.slot_horario.add((int)Math.floor(propostaPlano.horarioPartida));
                 tempoVoo--;
             }
 
             List<OcupacaoAerovia> ocupadas = this.ocupacaoRep.findOcupadasSlots(
                 aerovia.id, 
                 propostaPlano.data, 
-                slotsHorarios
+                propostaPlano.slot_horario
             );
             for(OcupacaoAerovia ocupacao: ocupadas) {
                 if (ocupacao.slot_altitude == propostaPlano.altitude) {
@@ -66,14 +66,13 @@ public class ServicoDePlanos {
             List<Aerovia> aerovias = rota.aerovias;
 
             for(Aerovia aerovia: aerovias) {
-                List<Float> slotsHorarios = new ArrayList<>();
 
                 float tempoVoo = aerovia.distancia / plano.aeronave.velCruzeiro;
 
                 for (int i = 0; i < tempoVoo; i++) {
-                    slotsHorarios.add((float) Math.floor(plano.slot_horario+i));
+                    plano.slot_horario.add((int) Math.floor(1));
                 }
-                List<OcupacaoAerovia> slotsOcupados = this.ocupacaoRep.findOcupadasSlots(aerovia.id, plano.data, slotsHorarios).stream()
+                List<OcupacaoAerovia> slotsOcupados = this.ocupacaoRep.findOcupadasSlots(aerovia.id, plano.data, plano.slot_horario).stream()
                         .filter(o -> o.slot_altitude == plano.altitude)
                         .collect(Collectors.toList());
 
@@ -90,24 +89,23 @@ public class ServicoDePlanos {
     public PlanoDeVoo autorizarPlanoDeVoo(PlanoVooDTO planoVoo) {
         if(this.verificarPlanoDeVoo(planoVoo).isEmpty()){
             Rota rota = this.rotasRep.findById(planoVoo.rotaId);
-            Aeronave aeronave = this.aeronavesRep.findById(planoVoo.aeronavePrefixo);
-            PlanoDeVoo planoDeVoo = new PlanoDeVoo(planoVoo.horarioPartida, planoVoo.data, planoVoo.altitude, aeronave, rota);
+            Aeronave aeronave = this.aeronaveRep.findAeronave(planoVoo.aeronave);
+            PlanoDeVoo planoDeVoo = new PlanoDeVoo(planoVoo.slot_horario, planoVoo.data, planoVoo.horarioPartida, planoVoo.altitude, aeronave, rota);
             for(Aerovia aerovia: rota.aerovias) {
-                List<Float> slotsHorarios = new ArrayList<>();
 
                 float tempoVoo = aerovia.distancia / planoDeVoo.aeronave.velCruzeiro;
 
                 for(int i=0; i<tempoVoo; i++){
-                    slotsHorarios.add((float) Math.floor(planoDeVoo.slot_horario+ i));
+                    planoVoo.slot_horario.add((int) Math.floor(1));
                 }
 
-                for(float slot: slotsHorarios){
+                for(int slot: planoVoo.slot_horario){
                     LocalDate date = planoVoo.data;
                     if(slot > 24){
                         slot = slot - 24;
                         date = date.plusDays(1);
                     }
-                    OcupacaoAerovia ocupacaoAerovia = new OcupacaoAerovia(date, aerovia, (int)planoVoo.altitude, (int)slot);
+                    OcupacaoAerovia ocupacaoAerovia = new OcupacaoAerovia(date, aerovia, (int)planoVoo.altitude, planoVoo.slot_horario);
                     this.ocupacaoRep.ocupa(ocupacaoAerovia);
                 }
             }
