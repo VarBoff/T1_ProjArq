@@ -1,5 +1,7 @@
 package com.dev.trabProjarq.dominio.entities;
 
+import com.dev.trabProjarq.Aplicacao.TiposAeronave;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,9 +9,11 @@ import javax.persistence.*;
 public class Aeronave {
 
     @Id
+    public int id;
+
     public String prefixo;
 
-    public String tipo;
+    public TiposAeronave tipo;
 
     public float velCruzeiro;
 

@@ -2,9 +2,11 @@ package com.dev.trabProjarq.dominio.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import net.bytebuddy.asm.Advice;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Entity
@@ -19,9 +21,9 @@ public class PlanoDeVoo {
 
     public float altitude;
 
-    public float slot_horario;
-
+    public List<Integer> slot_horario;
     public LocalDate data;
+    public float horarioPartida;
 
     @ManyToOne
     @JoinColumn( name = "id Aeronave" )
@@ -35,9 +37,10 @@ public class PlanoDeVoo {
 
     }
 
-    public PlanoDeVoo(float slot_horario, LocalDate data, int altitude,Aeronave aeronave, Rota rota) {
+    public PlanoDeVoo(List<Integer> slot_horario, LocalDate data, float horarioPartida, int altitude, Aeronave aeronave, Rota rota) {
         this.slot_horario = slot_horario;
         this.data = data;
+        this.horarioPartida = horarioPartida;
         this.altitude = altitude;
         this.aeronave = aeronave;
         this.rota = rota;
