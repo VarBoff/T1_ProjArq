@@ -68,10 +68,10 @@ public class ServicoDePlanos {
             for(Aerovia aerovia: aerovias) {
                 List<Float> slotsHorarios = new ArrayList<>();
 
-                float tempoVoo = aerovia.distancia / plano.velCruzeiro;
+                float tempoVoo = aerovia.distancia / plano.aeronave.velCruzeiro;
 
                 for (int i = 0; i < tempoVoo; i++) {
-                    slotsHorarios.add((float) Math.floor(plano.horarioPartida+i));
+                    slotsHorarios.add((float) Math.floor(plano.slot_horario+i));
                 }
                 List<OcupacaoAerovia> slotsOcupados = this.ocupacaoRep.findOcupadasSlots(aerovia.id, plano.data, slotsHorarios).stream()
                         .filter(o -> o.slot_altitude == plano.altitude)
@@ -90,14 +90,15 @@ public class ServicoDePlanos {
     public PlanoDeVoo autorizarPlanoDeVoo(PlanoVooDTO planoVoo) {
         if(this.verificarPlanoDeVoo(planoVoo).isEmpty()){
             Rota rota = this.rotasRep.findById(planoVoo.rotaId);
-            PlanoDeVoo planoDeVoo = new PlanoDeVoo(planoVoo.horarioPartida, planoVoo.data, planoVoo.altitude, planoVoo.velCruzeiro, rota);
+            Aeronave aeronave = this.aeronavesRep.findById(planoVoo.aeronavePrefixo);
+            PlanoDeVoo planoDeVoo = new PlanoDeVoo(planoVoo.horarioPartida, planoVoo.data, planoVoo.altitude, aeronave, rota);
             for(Aerovia aerovia: rota.aerovias) {
                 List<Float> slotsHorarios = new ArrayList<>();
 
-                float tempoVoo = aerovia.distancia / planoDeVoo.velCruzeiro;
+                float tempoVoo = aerovia.distancia / planoDeVoo.aeronave.velCruzeiro;
 
                 for(int i=0; i<tempoVoo; i++){
-                    slotsHorarios.add((float) Math.floor(planoDeVoo.horarioPartida+ i));
+                    slotsHorarios.add((float) Math.floor(planoDeVoo.slot_horario+ i));
                 }
 
                 for(float slot: slotsHorarios){
