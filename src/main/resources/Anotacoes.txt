@@ -1,0 +1,49 @@
+Aerovia é um corredor virtual que delimita uma trajetória e altitude num espaço aereo.
+Várias aeronaves podem voar na mesmoa aerovia dado uma separação vertical.
+    É a altitude que garante a segurança, sendo a distância minima entre aviões de 1000 pés. (305 metros)
+Em velocidade de cruzeiro:
+    Altitude minima: 25000 pés
+    Altitude máxima: 35000 pés
+Até 10 voos simultaneos em uma aerovia.
+
+Aviões voam entre aeroportos. Estes aeroportos são ligados por rotas.
+Uma Rota = Uma aerovia
+Uma rota tem:
+    Aeroporto Origem
+    Aeroporto destino
+    distância em kilometros
+
+A ocupação de um slot de horário em determinada hora se dá por uma HORA CHEIA. (são 10 slots
+de altitude por hora)
+Logo possuimos 24 slots (24 horas/dia) e 240 encaixes possíveis
+
+Uma rota possui uma distancia
+E um aviao possui uma velocidade máxima.
+O calculo entre os dois me dará a quantidade de slots ocupados.
+
+Plano de Voo possui aeronave, rota, altitude e slot. O piloto escolhe ALTITUDE E SLOTS DE TEMPO
+
+Aeronaves possuem apenas prefixos que sigam as regras abaixo.
+    Iniciam apenas com as seguintes letras: PP, PR, PS, PT, PU
+    Três caracteres seguintes são a matricula
+        Não pode começa com Q
+        A segunda letra não pode ser W
+        Não pode ser SOS, XXX, PAN, TTT, VFR, IFR, VMC e IMC
+Podem ser de
+    pequeno porte
+        Só podem voar acima de 25 a 27 mil pes.
+    comercial de passageiros
+        Só podem voar acima de 28 mil pes.
+    comercial de carga.
+        Só podem viajar entre as 24 e 6 da manhã
+
+O sistema deve listar:
+    Rotas existentes entre dois aeroportos (Sem escalas)
+    Deve para determinado dia, listar os slots de horário disponível e os respectivos níveis.
+
+Após isto, o sistema deve validar:
+    Slot realmente livre
+    Aviao possui autonomia
+    demais regras.
+Se estiver tudo ok, blouqueia os slots.
+
