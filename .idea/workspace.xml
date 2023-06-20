@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f08d551a-aa56-432b-882f-c35dc3559c2b" name="Changes" comment="trab do sem saco">
+      <change afterPath="$PROJECT_DIR$/EurekaBini/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaBini/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaBini/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaBini/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaBini/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaBini/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaBini/src/main/java/com/facul/t2ProjaArq/T2ProjaArqEurekaBiniApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaBini/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaBini/src/test/java/com/facul/t2ProjaArq/T2ProjaArqEurekaBiniApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/T1projarcApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/aplicacao/AprovaPlanoDeVoo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/aplicacao/AvaliaPlanoDeVoo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/aplicacao/CancelaPlanoDeVoo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/aplicacao/Config.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/aplicacao/ListaRotas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/aplicacao/ListaSlotsLivres.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/dominio/entity/Aeronave.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/dominio/entity/Aeroporto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/dominio/entity/Ocupacao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/dominio/entity/PlanoDeVoo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/dominio/entity/Rota.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/dominio/service/IRepositoryAeronavesCRUD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/dominio/service/IRepositoryOcupacaoCRUD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/dominio/service/IRepositoryPlanosCRUD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/dominio/service/IRepositoryRotasCRUD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/dominio/service/ServicoPlanos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/dominio/service/ServicoRota.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/interfacesAdaptadoras/ControllerAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/interfacesAdaptadoras/dto/PlanoDeVooDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/interfacesAdaptadoras/dto/RotaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/interfacesAdaptadoras/dto/SlotDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/interfacesAdaptadoras/dto/StatusPlanoDeVooDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/interfacesAdaptadoras/repository/IRepositoryAeronaves.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/interfacesAdaptadoras/repository/IRepositoryOcupacao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/interfacesAdaptadoras/repository/IRepositoryPlanos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/java/com/faculdade/t1projarc/interfacesAdaptadoras/repository/IRepositoryRotas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/resources/Anotacoes.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/resources/ModelagemT1 (1).asta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/main/resources/data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/T1/src/test/java/com/faculdade/t1projarc/T1projarcApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2PWx2ScJIjesWI1u833MGfPei0L" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "go.import.settings.migrated": "true",
+    "last_opened_file_path": "/Users/pedrosemensato/Downloads/t1projarc",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "spring.configuration.checksum": "25e9f533089d5277773da5f5bf6ae115",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.faculdade.t1projarc" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.T1projarcApplication">
+    <configuration name="T1projarcApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.faculdade.t1projarc.T1projarcApplication" />
+      <module name="t1projarc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.faculdade.t1projarc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="T1projarcApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="t1projarc" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.faculdade.t1projarc.T1projarcApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.T1projarcApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f08d551a-aa56-432b-882f-c35dc3559c2b" name="Changes" comment="" />
+      <created>1683586432920</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683586432920</updated>
+      <workItem from="1684083628590" duration="6375000" />
+      <workItem from="1684103560246" duration="30958000" />
+      <workItem from="1684507668315" duration="670000" />
+      <workItem from="1684541353533" duration="19000" />
+      <workItem from="1686403989548" duration="1847000" />
+      <workItem from="1686609711711" duration="253000" />
+    </task>
+    <task id="LOCAL-00001" summary="trab do sem saco">
+      <created>1687270049677</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1687270049677</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="T1_dos_outros" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="trab do sem saco" />
+    <option name="LAST_COMMIT_MESSAGE" value="trab do sem saco" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+</project>
