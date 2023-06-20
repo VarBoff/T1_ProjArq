@@ -1,0 +1,99 @@
+services:
+  currency-exchange:
+    image: exchange
+    build: ./currency-exchange-service
+    mem_limit: 700M
+    ports:
+      - "8000:8000"
+    networks:
+      - currency-network
+    depends_on:
+      - naming-server
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://naming-server:8761/eureka
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+  currency-conversion:
+    image: conversion
+    build: ./currency-conversion-service
+    mem_limit: 700M
+    ports:
+      - "8100:8100"
+    networks:
+      - currency-network
+    depends_on:
+      - naming-server
+      - rabbitmq
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://naming-server:8761/eureka
+      - spring.rabbitmq.host=rabbitmq
+      - spring.rabbitmq.port=5672
+      - spring.rabbitmq.username=engsoft2
+      - spring.rabbitmq.password=engsoft2
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+  history:
+    image: history
+    build: ./history-service
+    mem_limit: 700M
+    ports:
+      - "8120:8120"
+    networks:
+      - currency-network
+    depends_on:
+      - naming-server
+      - rabbitmq
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://naming-server:8761/eureka
+      - spring.rabbitmq.host=rabbitmq
+      - spring.rabbitmq.port=5672
+      - spring.rabbitmq.username=engsoft2
+      - spring.rabbitmq.password=engsoft2
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+  api-gateway:
+    image: gateway
+    build: ./api-gateway
+    mem_limit: 700M
+    ports:
+      - "8765:8765"
+    networks:
+      - currency-network
+    depends_on:
+      - naming-server
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://naming-server:8761/eureka
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+  naming-server:
+    image: nameserver
+    build: ./naming-server
+    mem_limit: 700M
+    ports:
+      - "8761:8761"
+    networks:
+      - currency-network
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=engsoft2
+      - RABBITMQ_DEFAULT_PASS=engsoft2
+    networks:
+      - currency-network
+networks:
+  currency-network:
